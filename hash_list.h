@@ -50,12 +50,13 @@ template<class Ele, class Keytype> list<Ele,Keytype> * hash<Ele,Keytype>::get_li
   return &entries[the_idx];
 }
 
+// This function assumes that lock_list is called before this.
 template<class Ele, class Keytype> Ele * hash<Ele,Keytype>::lookup(Keytype the_key){
   list<Ele,Keytype> *l;
 
   l = &entries[HASH_INDEX(the_key,my_size_mask)];
   return l->lookup(the_key);
-}  
+}
 
 template<class Ele, class Keytype> void hash<Ele,Keytype>::print(FILE *f){
   unsigned i;
@@ -79,6 +80,7 @@ template<class Ele, class Keytype> void hash<Ele,Keytype>::cleanup(){
   delete [] mutexes;
 }
 
+// This function assumes that lock_list is called before this.
 template<class Ele, class Keytype> void hash<Ele,Keytype>::insert(Ele *e){
   entries[HASH_INDEX(e->key(),my_size_mask)].push(e);
 }
