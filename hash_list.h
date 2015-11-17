@@ -38,7 +38,7 @@ template<class Ele, class Keytype> void hash<Ele,Keytype>::setup(unsigned the_si
   mutexes = new pthread_mutex_t[my_size];
   int i;
   for (i = 0; i < my_size; i++) {
-      mutexes[i] = PTHREAD_MUTEX_INITIALIZER;
+      pthread_mutex_init(&mutexes[i], NULL);
   }
 }
 

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "defs.h"
-#include "hash.h"
+#include "hash_list.h"
 
 // Global constants
 #define SAMPLES_TO_COLLECT   10000000
@@ -24,7 +24,6 @@ class sample;
 hash<sample,unsigned> h;    // Key is 'unsigned' and element is 'class sample'
 unsigned num_threads;
 unsigned samples_to_skip;
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 class sample {
     unsigned my_key;
@@ -64,7 +63,7 @@ void* count_frequencies(void *args){
             key = rnum % RAND_NUM_UPPER_BOUND;
 
             // ++++++ critial section starts +++++++
-            pthread_mutex_lock(&mutex);
+            h.lock_list(key);
             // if this sample has not been counted before
             if (!(s = h.lookup(key))){
                 // insert a new element for it into the hash table
@@ -73,7 +72,7 @@ void* count_frequencies(void *args){
             }
             // increment the count for the sample
             s->count++;
-            pthread_mutex_unlock(&mutex);
+            h.unlock_list(key);
             // ++++++ critial section ends +++++++
         }
     }
