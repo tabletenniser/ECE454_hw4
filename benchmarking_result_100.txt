@@ -1,0 +1,90 @@
+FILE: ./randtrack THREAD_NUM: 1
+Average user :
+20.468
+Average real :
+20.476
+FILE: ./randtrack THREAD_NUM: 2
+Average user :
+20.454
+Average real :
+20.464
+FILE: ./randtrack THREAD_NUM: 4
+Average user :
+20.47
+Average real :
+20.478
+FILE: ./randtrack_global_lock THREAD_NUM: 1
+Average user :
+20.624
+Average real :
+20.63
+FILE: ./randtrack_global_lock THREAD_NUM: 2
+Average user :
+21.928
+Average real :
+11.032
+FILE: ./randtrack_global_lock THREAD_NUM: 4
+Average user :
+23.24
+Average real :
+5.95
+FILE: ./randtrack_tm THREAD_NUM: 1
+Average user :
+21.352
+Average real :
+21.36
+FILE: ./randtrack_tm THREAD_NUM: 2
+Average user :
+20.876
+Average real :
+10.478
+FILE: ./randtrack_tm THREAD_NUM: 4
+Average user :
+22.124
+Average real :
+5.57
+FILE: ./randtrack_list_lock THREAD_NUM: 1
+Average user :
+20.8
+Average real :
+20.81
+FILE: ./randtrack_list_lock THREAD_NUM: 2
+Average user :
+21.2
+Average real :
+10.632
+FILE: ./randtrack_list_lock THREAD_NUM: 4
+Average user :
+22.656
+Average real :
+5.722
+FILE: ./randtrack_element_lock THREAD_NUM: 1
+Average user :
+20.782
+Average real :
+20.79
+FILE: ./randtrack_element_lock THREAD_NUM: 2
+Average user :
+21.13
+Average real :
+10.618
+FILE: ./randtrack_element_lock THREAD_NUM: 4
+Average user :
+22.384
+Average real :
+5.684
+FILE: ./randtrack_reduction THREAD_NUM: 1
+Average user :
+20.464
+Average real :
+20.474
+FILE: ./randtrack_reduction THREAD_NUM: 2
+Average user :
+20.51
+Average real :
+10.322
+FILE: ./randtrack_reduction THREAD_NUM: 4
+Average user :
+21.674
+Average real :
+5.524

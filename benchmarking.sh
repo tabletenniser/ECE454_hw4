@@ -10,7 +10,7 @@ do
         rm ./.times
         for i in `seq 1 $N`;
         do
-            /usr/bin/time -a -p -o ./.times ${file} ${thread_num} 50 > /dev/null
+            /usr/bin/time -a -p -o ./.times ${file} ${thread_num} 100 > /dev/null
             #echo $i
         done
         echo "Average user :"
