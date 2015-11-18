@@ -64,21 +64,19 @@ void* count_frequencies(void *args){
             key = rnum % RAND_NUM_UPPER_BOUND;
 
             // if this sample has not been counted before
-            h.lock_list(key);
-            s = h.lookup(key);
-            if (!s){
+            if (!(s = h.lookup(key))){
                 // insert a new element for it into the hash table
-                s = new sample(key);
-                h.insert(s);
-                s->count++;
+                h.lock_list(key);
+                if (!(s = h.lookup(key))){
+                    s = new sample(key);
+                    h.insert(s);
+                }
                 h.unlock_list(key);
-            } else {
-                h.unlock_list(key);
-                // increment the count for the sample
-                pthread_mutex_lock(&s->mutex);
-                s->count++;
-                pthread_mutex_unlock(&s->mutex);
             }
+            // increment the count for the sample
+            pthread_mutex_lock(&s->mutex);
+            s->count++;
+            pthread_mutex_unlock(&s->mutex);
         }
     }
 
